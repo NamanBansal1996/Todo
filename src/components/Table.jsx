@@ -3,7 +3,7 @@ import React from 'react'
 import {BsFillTrashFill,BsFillPencilFill} from "react-icons/bs";
 import "./table.css";
 
-export default function Table() {
+export const Table=({rows, deleteRow})=> {
   return (
     <div className='table-wrapper'>
       <table className='table'>
@@ -16,47 +16,30 @@ export default function Table() {
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Home</td>
-                <td>This is the main page</td>
-                <td>
-                    <span className='label label-live'>Live</span>
-                </td>
-                <td>
+            {
+                rows.map((row,idx)=>{
+                    const statusText = row.status.charAt(0).toUpperCase() + row.status.slice(1);
+
+                    return<tr key={idx}>
+                    <td>{row.page}</td>
+                    <td className='expand'>{row.description}</td>
+                    <td >
+                        <span className={`label label-${statusText}`}>{row.status}
+                        </span>
+                    </td>
+                    <td>
                     <span className='actions'>
                         <BsFillPencilFill/>
-                        <BsFillTrashFill className='delete-btn'/>
+                        <BsFillTrashFill className='delete-btn' onClick={()=>deleteRow(idx)}/>
                     </span>
                 </td>
-            </tr>
-            <tr>
-                <td>Page2</td>
-                <td>This is the Second page</td>
-                <td>
-                    <span className='label label-draft'>Draft</span>
-                </td>
-                <td>
-                    <span className='actions'>
-                        <BsFillPencilFill/>
-                        <BsFillTrashFill className='delete-btn'/>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td>Page3</td>
-                <td>This is the 3rd page page</td>
-                <td>
-                    <span className='label label-error'>error</span>
-                </td>
-                <td>
-                    <span className='actions'>
-                        <BsFillPencilFill/>
-                        <BsFillTrashFill className='delete-btn'/>
-                    </span>
-                </td>
-            </tr>
+                    </tr>
+                })
+            }
+            
         </tbody>
       </table>
     </div>
   )
 }
+export default Table;
