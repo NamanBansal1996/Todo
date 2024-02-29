@@ -13,24 +13,43 @@ const [rows,setRows] = useState([
   {page:"page3",description:"This is the third page", status:"error"}
 ]);
 
+const[rowToEdit , setRowToEdit] = useState(null);
+
+
 const handleDeleteRow = (targetIndex)=>{
   setRows(rows.filter((_,idx) => idx !== targetIndex))
 };
 
+const handleEditRow = (idx) =>{
+  setRowToEdit(idx);
+
+
+  setModalOpen(true);
+};
+
 
 const handleSubmit = (newRow)=>{
-  setRows([...rows, newRow])
+  rowToEdit === null ?
+  setRows([...rows, newRow]):
+  setRows(rows.map((currRow,idx)=>{
+    if(idx!== rowToEdit) return currRow;
+
+    return newRow;
+  }))
+
 }
   return (
     <div className="App">
-      <Table rows= {rows} deleteRow = {handleDeleteRow}/>
+      <Table rows= {rows} deleteRow = {handleDeleteRow}  editRow = {handleEditRow}/>
       <button className='btn' onClick={()=>setModalOpen(true)}>Add</button>
       {modalOpen && (
       <Modal
       closeModal={() => {
         setModalOpen(false);
+        setRowToEdit(null);
       }}
       onSubmit={handleSubmit}
+      defaultValue = {rowToEdit !== null && rows[rowToEdit]}
       />
       )}
     </div>
