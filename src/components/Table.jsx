@@ -25,7 +25,7 @@ export default function Table() {
                 <td>
                     <span className='actions'>
                         <BsFillPencilFill/>
-                        <BsFillTrashFill/>
+                        <BsFillTrashFill className='delete-btn'/>
                     </span>
                 </td>
             </tr>
@@ -38,7 +38,7 @@ export default function Table() {
                 <td>
                     <span className='actions'>
                         <BsFillPencilFill/>
-                        <BsFillTrashFill/>
+                        <BsFillTrashFill className='delete-btn'/>
                     </span>
                 </td>
             </tr>
@@ -51,7 +51,7 @@ export default function Table() {
                 <td>
                     <span className='actions'>
                         <BsFillPencilFill/>
-                        <BsFillTrashFill/>
+                        <BsFillTrashFill className='delete-btn'/>
                     </span>
                 </td>
             </tr>
