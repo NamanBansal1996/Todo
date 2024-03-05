@@ -57,7 +57,7 @@ const validateForm =()=>{
       closeModal()
     }}
     >
-      <div className='modal'>0
+      <div className='modal'>
         <form>
             <div className='form-group'>
                 <label htmlFor='page'>Page</label>
@@ -65,12 +65,12 @@ const validateForm =()=>{
             </div>
             <div className='form-group'>
                 <label htmlFor='description'>Description</label>
-                <input name='page' value={formState.page} onChange={handleChange}/>
+                {/* <input name='page' value={formState.page} onChange={handleChange}/> */}
                 <textarea name='page' value={formState.description} />
             </div>
             <div className='form-group'>
                 <label htmlFor='status'>Status</label>
-                <input name='page' value={formState.page} onChange={handleChange}/>
+                {/* <input name='page' value={formState.page} onChange={handleChange}/> */}
                 <select name='status' value={formState.status} >
                     <option value='live'>Live</option>
                     <option value='draft'>Draft</option>

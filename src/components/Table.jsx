@@ -24,7 +24,7 @@ export const Table=({rows, deleteRow,editRow})=> {
                     <td>{row.page}</td>
                     <td className='expand'>{row.description}</td>
                     <td >
-                        <span className={`label label-${statusText}`}>{row.status}
+                        <span className={`label label-${row.status}`}>{statusText}
                         </span>
                     </td>
                     <td>
